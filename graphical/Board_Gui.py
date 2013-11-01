@@ -7,6 +7,7 @@ from Tkinter import *
 class Game(object):
   def __init__(self):
     self.master = Tk()
+    self.master.title("Tic Tac Totally Awesome")
     self.w = Canvas(self.master, width=230, height=200, background="white")
     self.w.pack()
     
