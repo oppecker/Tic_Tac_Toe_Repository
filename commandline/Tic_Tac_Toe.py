@@ -80,6 +80,33 @@ class Game(object):
       self.piece = 'X'
     
   def run_game(self):
+    game_mode = self.choose_mode()
+    if game_mode == "1":
+      self.single_player()
+    else:
+      self.multi_player()
+    
+  def single_player(self):
+    print "single player fun time"
+    game_over = False
+    self.board.print_board()
+    while(game_over == False):
+      #prompt for move
+      input = self.prompt_and_verify_move()
+      #update board using 'x' as piece until turn system is implemented
+      self.board.update_board(self.piece, input)
+      self.board.print_board()
+      #check for a win or draw
+      game_over = self.check_win_draw()
+      #switch to other player
+      self.switch_player()
+      #NOW DO COMPUTERS MOVE
+      #Determine correct move from position
+      #Update board with the move
+      #print the board
+      #switch to other player
+    
+  def multi_player(self):
     game_over = False
     self.board.print_board()
     #enter while loop of game play
@@ -94,6 +121,14 @@ class Game(object):
       #switch to other player
       self.switch_player()
     print game_over
+    
+  def choose_mode(self):
+    game_mode = -1
+    while (game_mode != "1") & (game_mode != "2"):
+      input_prompt = "Enter 1 for single player mode, 2 for double player mode:"
+      game_mode = raw_input(input_prompt)
+    return game_mode
+    
     
 class Tic_Tac_Toe_AI(object):
   def __init__(self):

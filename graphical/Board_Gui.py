@@ -3,6 +3,7 @@
 # daniel.oppecker@gmail.com
 
 from Tkinter import *
+import re
 
 class Game(object):
   def __init__(self):
