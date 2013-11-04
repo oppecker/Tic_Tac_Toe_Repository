@@ -6,11 +6,11 @@ import re
 
 class Game_Board(object):
   def __init__(self):
-    self.board = ["1","2", "3", "4", "5", "6", "7", "8", "9"]
+    self.board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
   def print_board(self):
     board_as_string = ''.join(self.board)
-    print " %c | %c | %c \n--- --- ---\n %c | %c | %c \n--- --- ---\n %c | %c | %c" % (
+    print " %c | %c | %c \n---+---+---\n %c | %c | %c \n---+---+---\n %c | %c | %c" % (
     board_as_string[0], board_as_string[1], board_as_string[2], 
     board_as_string[3], board_as_string[4], board_as_string[5], 
     board_as_string[6], board_as_string[7], board_as_string[8])

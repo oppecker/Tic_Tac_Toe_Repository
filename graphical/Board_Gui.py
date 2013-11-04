@@ -19,7 +19,7 @@ class Game(object):
     self.o_wins = PhotoImage(file="o_wins.gif")
     self.game_draw = PhotoImage(file="game_draw.gif")
     
-    self.board = ["1","2", "3", "4", "5", "6", "7", "8", "9"]
+    self.board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     self.piece = 'X'
     self.piece_image = self.x_piece
     
