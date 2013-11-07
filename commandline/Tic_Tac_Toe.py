@@ -3,10 +3,11 @@
 # daniel.oppecker@gmail.com
 
 import re
+import AI
 
 class Game_Board(object):
   def __init__(self):
-    self.board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    self.board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
     
   def print_board(self):
     board_as_string = ''.join(self.board)
@@ -25,7 +26,7 @@ class Game(object):
   def __init__(self):
     self.board = Game_Board()
     self.piece = 'X'
-    self.game_bot = Tic_Tac_Toe_AI()
+    self.game_bot = AI.AI('O')
     
   def prompt_and_verify_move(self):
     valid = False
@@ -39,7 +40,7 @@ class Game(object):
         move = raw_input("Invalid Input\nEnter Move (1-9): ")
         continue
       #convert move to index an of board
-      move -= 1
+      #move -= 1
       #next check if the move integer is between 0 and 8. otherwise it is not a valid index for the board string
       if (move > 8) | (move < 0):
         move = raw_input("Invalid Input\nEnter Move (1-9): ")
@@ -100,6 +101,11 @@ class Game(object):
       game_over = self.check_win_draw()
       #switch to other player
       self.switch_player()
+      self.board.update_board(self.piece, self.game_bot.move(self.board.board))
+
+      self.board.print_board()
+      game_over = self.check_win_draw()
+      self.switch_player()
       #NOW DO COMPUTERS MOVE
       #Determine correct move from position
       #Update board with the move
@@ -128,11 +134,6 @@ class Game(object):
       input_prompt = "Enter 1 for single player mode, 2 for double player mode:"
       game_mode = raw_input(input_prompt)
     return game_mode
-    
-    
-class Tic_Tac_Toe_AI(object):
-  def __init__(self):
-    self.x = "FAKE"
 
 def main():
   game = Game()
